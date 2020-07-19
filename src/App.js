@@ -11,30 +11,30 @@ import Calculator from './panels/Calculator'
 const App = () => {
 	const [activePanel, setActivePanel] = useState('calculator');
 	//const [fetchedUser, setUser] = useState(null);
-	//const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
-	// useEffect(() => {
-	// 	bridge.subscribe(({ detail: { type, data }}) => {
-	// 		if (type === 'VKWebAppUpdateConfig') {
-	// 			const schemeAttribute = document.createAttribute('scheme');
-	// 			schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-	// 			document.body.attributes.setNamedItem(schemeAttribute);
-	// 		}
-	// 	});
-	// 	async function fetchData() {
-	// 		const user = await bridge.send('VKWebAppGetUserInfo');
-	// 		setUser(user);
-	// 		setPopout(null);
-	// 	}
-	// 	fetchData();
-	// }, []);
+	useEffect(() => {
+		bridge.subscribe(({ detail: { type, data }}) => {
+			if (type === 'VKWebAppUpdateConfig') {
+				const schemeAttribute = document.createAttribute('scheme');
+				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
+				document.body.attributes.setNamedItem(schemeAttribute);
+			}
+		});
+		async function fetchData() {
+			//const user = await bridge.send('VKWebAppGetUserInfo');
+			//setUser(user);
+			setPopout(null);
+		}
+		fetchData();
+	}, []);
 
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 	
 	return (
-		<View activePanel={activePanel} /*popout={popout}*/>
+		<View activePanel={activePanel} popout={popout}>
 			{/* <Home id='home' fetchedUser={fetchedUser} go={go} /> */}
 			{/* <Persik id='persik' go={go} /> */}
 			<Calculator id="calculator" go={go}/>
