@@ -43,9 +43,9 @@ class Calculator extends React.Component {
     render() {
         return (
             <Panel id={this.props.id}>
-                <PanelHeader left={<PanelHeaderButton onClick={this.props.go} data-to="home">
+                <PanelHeader /*left={<PanelHeaderButton onClick={this.props.go} data-to="home">
                     {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-                </PanelHeaderButton>}>
+                </PanelHeaderButton>}*/>
                     Calculator
                 </PanelHeader>
                 <Input id='calculator-input' type="text" readOnly={true} align="right" value={this.state.inputValue} onChange={e => this.updateInputValue(e.target.value)}/>
