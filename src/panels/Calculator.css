@@ -1,0 +1,9 @@
+#calculator-input {
+    font-size: 35px;
+    height: 60px;
+}
+
+.buttons-div > Button {
+    margin: 1% 2% 0 2%;
+    height: 60px;
+}
